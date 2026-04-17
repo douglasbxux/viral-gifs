@@ -41,7 +41,7 @@ async function register(){
     password: senha
   });
 
-  if(error) alert('Erro ao cadastrar');
+  if(error) alert(error.message);
   else alert('Conta criada! Verifique seu email');
 }
 // LOGIN
