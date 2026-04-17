@@ -19,7 +19,8 @@
   <div>
     <input id="email" placeholder="email">
     <input id="senha" type="password" placeholder="senha">
-    <button onclick="login()">Entrar</button>
+    <button <button onclick="login()">Entrar</button>
+<button onclick="register()">Cadastrar</button>
   </div>
 </header><div style="padding:10px">
   <input type="file" id="upload">
@@ -30,7 +31,19 @@ const supabaseClient = supabase.createClient(
 );
 
 let user = null;
+// CADASTRO
+async function register(){
+  let email = document.getElementById('email').value;
+  let senha = document.getElementById('senha').value;
 
+  let { error } = await supabaseClient.auth.signUp({
+    email: email,
+    password: senha
+  });
+
+  if(error) alert('Erro ao cadastrar');
+  else alert('Conta criada! Verifique seu email');
+}
 // LOGIN
 async function login(){
   let email = document.getElementById('email').value;
