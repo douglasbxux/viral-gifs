@@ -49,7 +49,10 @@ async function login(){
   let email = document.getElementById('email').value;
   let senha = document.getElementById('senha').value;
 
-  let { data, error } = await supabaseClient.auth.signInWithPassword({ email, password: senha });
+  let { data, error } = await supabaseClient.auth.signInWithPassword({
+  email: email,
+  password: senha
+});({ email, password: senha });
 
   if(error) return alert('Erro login');
 
