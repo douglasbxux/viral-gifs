@@ -69,7 +69,9 @@ document.getElementById('upload').addEventListener('change', async (e)=>{
   let file = e.target.files[0];
   let nome = Date.now()+file.name;
 
-  await supabaseClient.storage.from('gifs').upload(nome, file);
+  await supabaseClient.storage.from('gifs').upload(nome, file, {
+  upsert: true
+});
 
  let url = `https://owsiorfhmiotbdjzfipa.supabase.co/storage/v1/object/public/gifs/${nome}`;
 
