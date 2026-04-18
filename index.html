@@ -16,12 +16,6 @@
 </head>
 <body><header>
   <h3>🔥🤪🫪🔥 ViralGIFs PRO++</h3>
-  <div>
-    <input id="email" placeholder="email">
-    <input id="senha" type="password" placeholder="senha">
-    <button onclick="login()">Entrar</button>
-<button onclick="register()">Cadastrar</button>
-
   </div>
 </header><div style="padding:10px">
   <input type="file" id="upload">
@@ -31,11 +25,8 @@ const supabaseClient = supabase.createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93c2lvcmZobWlvdGJkanpmaXBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzOTk2NzQsImV4cCI6MjA5MTk3NTY3NH0.s_U9TlFC5jSWsP-9nEQybqKm0WGoWaxhwT6uloUA2e8"
 );
 
-let user = null;
-// CADASTRO
-async function register(){
-  let email = document.getElementById('email').value;
-  let senha = document.getElementById('senha').value;
+let 
+
 
   let { error } = await supabaseClient.auth.signUp({
     email: email,
@@ -64,7 +55,7 @@ async function login(){
 // UPLOAD
 
 document.getElementById('upload').addEventListener('change', async (e)=>{
-  if(!user) return alert('Faça login');
+  
 
   let file = e.target.files[0];
   let nome = Date.now()+file.name;
@@ -76,7 +67,7 @@ document.getElementById('upload').addEventListener('change', async (e)=>{
  let url = `https://owsiorfhmiotbdjzfipa.supabase.co/storage/v1/object/public/gifs/${nome}`;
 
   await supabaseClient.from('gifs').insert([
-    { url: url, user_id: user.id, likes: 0 }
+    { { url: url, likes: 0 }
   ]);
 
   loadGifs();
