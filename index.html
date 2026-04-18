@@ -19,7 +19,8 @@
   <div>
     <input id="email" placeholder="email">
     <input id="senha" type="password" placeholder="senha">
-    <button <button onclick="login()">Entrar</button>
+    <button onclick="login()">Entrar</button>
+<button onclick="register()">Cadastrar</button>
 <button onclick="register()">Cadastrar</button>
   </div>
 </header><div style="padding:10px">
@@ -52,7 +53,7 @@ async function login(){
   let { data, error } = await supabaseClient.auth.signInWithPassword({
   email: email,
   password: senha
-});({ email, password: senha });
+});
 
   if(error) return alert('Erro login');
 
@@ -70,7 +71,7 @@ document.getElementById('upload').addEventListener('change', async (e)=>{
 
   await supabaseClient.storage.from('gifs').upload(nome, file);
 
-  let url = `https://SEU_PROJETO.supabase.co/storage/v1/object/public/gifs/${nome}`;
+ let url = `https://owsiorfhmiotbdjzfipa.supabase.co/storage/v1/object/public/gifs/${nome}`;
 
   await supabaseClient.from('gifs').insert([
     { url: url, user_id: user.id, likes: 0 }
